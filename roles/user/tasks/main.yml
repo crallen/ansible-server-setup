@@ -1,0 +1,16 @@
+---
+
+- name: Add super user
+  user:
+    name: "{{ user }}"
+    password: "{{ password }}"
+    groups: sudo
+    append: yes
+    state: present
+    update_password: always
+
+- name: Add SSH key for user
+  authorized_key:
+    user: "{{ user }}"
+    key: "{{ lookup('file', item) }}"
+  with_items: "{{ public_key }}"

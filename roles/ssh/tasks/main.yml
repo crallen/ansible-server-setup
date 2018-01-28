@@ -1,0 +1,33 @@
+---
+
+- name: Change SSH port
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^Port\s'
+    line: "Port {{ ssh_port }}"
+    state: present
+  notify: restart ssh
+
+- name: Disable root login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: "PermitRootLogin no"
+    state: present
+  notify: restart ssh
+
+- name: Disable password authentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^PasswordAuthentication'
+    line: "PasswordAuthentication no"
+    state: present
+  notify: restart ssh
+
+- name: Restrict SSH to super user
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    insertafter: '^StrictModes'
+    line: "AllowUsers {{ user }}"
+    state: present
+  notify: restart ssh

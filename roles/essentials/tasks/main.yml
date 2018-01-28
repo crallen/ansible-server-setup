@@ -1,0 +1,24 @@
+---
+
+- name: Update packages
+  apt:
+    update_cache: yes
+    upgrade: safe
+    autoremove: yes
+
+- name: Install essential packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    cache_valid_time: 3600
+    state: latest
+  with_items:
+    - unattended-upgrades
+
+- name: Enable unattended upgrades
+  copy:
+    src: ./src/apt/10upgrades
+    dest: /etc/apt/apt.conf.d/10upgrades
+    owner: root
+    group: root
+    mode: 0644
