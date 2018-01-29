@@ -6,6 +6,7 @@
     password: "{{ password }}"
     groups: sudo
     append: yes
+    shell: /bin/bash
     state: present
     update_password: always
 
