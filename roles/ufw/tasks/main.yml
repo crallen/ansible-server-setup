@@ -1,0 +1,12 @@
+---
+
+- name: Allow SSH traffic
+  ufw:
+    rule: limit
+    port: "{{ ssh_port }}"
+    proto: tcp
+
+- name: Enable firewall
+  ufw:
+    state: enabled
+    policy: deny

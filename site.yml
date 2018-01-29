@@ -13,3 +13,4 @@
     - essentials
     - user
     - ssh
+    - ufw
