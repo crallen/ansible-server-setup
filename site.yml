@@ -3,13 +3,13 @@
 - hosts: all
   gather_facts: false
   tasks:
-  - name: Install Python
-    raw: test -e /usr/bin/python || (apt update && apt install -y python2.7)
-    register: test
-    changed_when: test.stdout
+    - name: Install Python
+      raw: test -e /usr/bin/python || (apt update && apt install -y python2.7)
+      register: test
+      changed_when: test.stdout
 
 - hosts: all
   roles:
-  - essentials
-  - user
-  - ssh
+    - essentials
+    - user
+    - ssh
