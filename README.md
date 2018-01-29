@@ -2,6 +2,7 @@
 
 ## Prerequisites
 
+* Ubuntu Server 16.04 LTS
 * Python
 * Ansible (either from pip or Homebrew)
 * passlib (from pip)
