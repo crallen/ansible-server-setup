@@ -14,8 +14,8 @@
 
 - name: Enable unattended upgrades
   copy:
-    src: ./config/apt/10upgrades
-    dest: /etc/apt/apt.conf.d/10upgrades
+    src: ./config/apt/10updates
+    dest: /etc/apt/apt.conf.d/10updates
     owner: root
     group: root
     mode: 0644
