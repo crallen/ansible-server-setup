@@ -1,23 +1,20 @@
 ---
 
-- name: Update packages
+- name: Update existing packages
   apt:
     update_cache: yes
     upgrade: safe
     autoremove: yes
 
-- name: Install essential packages
+- name: Install unattended-upgrades package
   apt:
-    name: "{{ item }}"
+    name: unattended-upgrades
     update_cache: yes
-    cache_valid_time: 3600
     state: latest
-  with_items:
-    - unattended-upgrades
 
 - name: Enable unattended upgrades
   copy:
-    src: ./src/apt/10upgrades
+    src: ./config/apt/10upgrades
     dest: /etc/apt/apt.conf.d/10upgrades
     owner: root
     group: root

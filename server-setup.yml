@@ -10,7 +10,7 @@
 
 - hosts: all
   roles:
-    - essentials
+    - updates
     - user
     - ssh
     - ufw
